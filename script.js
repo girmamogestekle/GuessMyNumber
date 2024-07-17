@@ -1,6 +1,17 @@
 'use strict';
-console.log(document.querySelector('.message').textContent);
 
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnClose = document.querySelector('.close-modal');
+const openModal = function () {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+  displayMessage('🎉 Correct Number!');
+};
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 let displayMessage = message =>
@@ -27,7 +38,7 @@ function displayMessageAndScore(guess) {
 }
 
 function displayCorrectNumber() {
-  displayMessage('🎉 Correct Number!');
+  displayMessage('');
   styleBody('#60b347');
   styleNumber('30rem');
   displayNumber(secretNumber);
@@ -37,6 +48,7 @@ function displayCorrectNumber() {
     currentHighScore = currentScore;
     document.querySelector('.highscore').textContent = currentHighScore;
   }
+  openModal();
 }
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -54,4 +66,12 @@ document.querySelector('.again').addEventListener('click', function () {
   displayScore(20);
   document.querySelector('.guess').value = '';
   secretNumber = Math.trunc(Math.random() * 20) + 1;
+});
+
+btnClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && !modal.classList.contains('hidden'))
+    closeModal();
 });
