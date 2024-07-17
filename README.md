@@ -1,3 +1,3 @@
 # GuessMyNumber
 
-It is a sample project from Udemy Academy for practice HTML, CSS and JS. 
+It is a sample project from Udemy Academy to practice HTML, CSS and JS. 
