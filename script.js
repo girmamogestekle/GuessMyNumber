@@ -20,6 +20,12 @@ function displayCorrectNumber() {
   document.querySelector('body').style.backgroundColor = '#60b347';
   document.querySelector('.number').style.width = '30rem';
   document.querySelector('.number').textContent = secretNumber;
+  let currentScore = document.querySelector('.score').textContent;
+  let currentHighScore = document.querySelector('.highscore').textContent;
+  if (currentScore > currentHighScore) {
+    currentHighScore = currentScore;
+    document.querySelector('.highscore').textContent = currentHighScore;
+  }
 }
 
 document.querySelector('.check').addEventListener('click', function () {
